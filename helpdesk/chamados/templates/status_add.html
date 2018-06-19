@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <h1>Criar Tipo</h1>
+  <form action="/status/salvar" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="id_status" value="{{status.pk}}">
+    <label>Nome status:</label>
+    <input name='nome_status' type="text" value='{{status.titulo}}' ></input>
+    <br /><br />
+    <button type="submit" class="btn btn-success" role='button'>Salvar</button>
+  </form>
+  
+{% endblock %}

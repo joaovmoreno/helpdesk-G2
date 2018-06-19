@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<a href="/newchamado/" role="button">Abrir Chamado</a>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">Categorias</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+
+
+                        <table id="showDrone" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th>id </th>
+                                <th>titulo</th>
+                                <th>descricao</th>]
+                                <th>Telefone</th>
+                                <th>Data de abertura</th>
+                                <th>Açoes</th>
+
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {% for chamados in chamado %}
+                                    <td>{{ chamados.id }}</td>
+                                    <td>{{ chamados.titulo }} </td>
+                                    <td>{{ chamados.descricao }}</td>
+                                    <td>{{ chamados.telefone }}</td>
+                                    <td>{{ chamados.data_abertura }}</td>
+
+                                    <td>
+
+                                        <a style="font-size:20px" type="submit" name="btnDelete" role="button" class="button" href="/atendechamado/{{ chamados.id }}/">
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                                Atender
+                                            </button>
+
+                                            <!-- Modal -->
+                                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Atender Chamado</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <label>Descriçao Chamado</label>
+                                                                <input type="text" name="atendimetoDescriçao">
+
+                                                            <label>Funcionario</label>
+                                                            <input type="text" name="funcAtendimento">
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+
+
+                                    </td>
+
+                                {% endfor %}
+                            </tr>
+                            </tbody>
+                        </table>
+
+
+{% endblock %}

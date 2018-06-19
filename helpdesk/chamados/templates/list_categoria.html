@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+   <a href="/newcategoria/" role="button" >Nova categoria</a>
+        <!-- Main content -->
+        <section class="content">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Categorias</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <div class="card-body">
+
+
+                            <table id="showDrone" class="table table-bordered table-hover">
+                                <thead>
+                                <tr>
+                                    <th>id Categoria</th>
+                                    <th>Nome Categoria</th>
+                                    <th>Ações</th>
+                                </tr>
+                                </thead>
+                                    <tbody>
+                                    <tr>
+                                        {% for categorias in categoria %}
+                                        <td>{{ categorias.id }}</td>
+                                        <td>{{ categorias.titulo }} </td>
+
+                                            <td>
+
+                                                <a style="font-size:20px" type="submit" name="btnDelete" role="button" class="button" href="/deletecategoria/{{ categorias.id }}/">Excluir</a>
+
+                                                <a style="font-size:20px" type="submit" name="btnUpdate" role="button" class="button" href="/updatecategoria/{{ categorias.id}}/">Atualizar</a>
+                                            </td>
+
+                                    {% endfor %}
+                                    </tr>
+                                    </tbody>
+                                 </table>
+
+
+
+{% endblock %}

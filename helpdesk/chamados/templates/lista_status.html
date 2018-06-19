@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+  <h1>Lista de Status</h1>
+  <ul>
+  {% for s in lista_status %}
+      <li>{{ s.titulo }} - <a href="/status/edit/{{s.pk}}">Editar</a></li>
+  {% endfor %}
+  </ul>
+  <a class="btn btn-primary" role='button' href='/status/add'>Novo</a>
+
+{% endblock %}
